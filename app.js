@@ -59,35 +59,12 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
-    console.log(req.session);
+    // console.log(req.session);
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     next()
 })
-
-
-const validateCampground = (req, res, next) => {
-    const {error} = campgroundschema.validate(req.body);
-    if(error){
-        const msg = error.details.map(el => el.message).join(',');
-        throw new ExpressError(msg, 400);
-    }
-    else{
-        next();
-    }
-}
-
-const validateReview = (req, res, next) => {
-    const {error} = reviewSchema.validate(req.body);
-    if(error){
-        const msg = error.details.map(el => el.message).join(',');
-        throw new ExpressError(msg, 400);
-    }
-    else{
-        next();
-    }
-}
 
 app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/reviews', reviewRoutes);
@@ -96,8 +73,6 @@ app.use('/', userRoutes);
 app.get('/', (req, res) => {
     res.render('home');
 })
-
-
 
 app.all("*", (req, res, next) => {
    next(new ExpressError("Page Not Found", 404));
