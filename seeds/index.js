@@ -26,9 +26,18 @@ const seedDB = async () => {
             auther: '61a619d6092853108b8ae036',
             location: `${cities[randomCities].city}, ${cities[randomCities].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: 'https://source.unsplash.com/collection/483251/1600x900',
             description: "This opera's as lousy as it is brilliant! Your lyrics lack subtlety. You can't just have your characters announce how they feel. That makes me feel angry! Anyhoo, your net-suits will allow you to experience.",
-            price
+            price,
+            images: [
+                {
+                  url: 'https://res.cloudinary.com/dglsuv87x/image/upload/v1638443190/YALPCAMP/nqtdpagymqc8dekcwkus.jpg',
+                  filename: 'YALPCAMP/nqtdpagymqc8dekcwkus',
+                },
+                {
+                  url: 'https://res.cloudinary.com/dglsuv87x/image/upload/v1638443191/YALPCAMP/jvtnn32kuz2gzttq4srn.jpg',
+                  filename: 'YALPCAMP/jvtnn32kuz2gzttq4srn',
+                }
+              ]
         })
         await camp.save();
     }
