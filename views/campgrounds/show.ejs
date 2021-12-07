@@ -1,9 +1,10 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/stars.css">
 
-<div id='map' style='width: 400px; height: 300px;'></div>
+<div id='map'></div>
 <div class="row">
   <div class="col-6">
+    <h2>Campground</h2>
     <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <% campground.images.forEach((img, i) => {  %>
@@ -13,7 +14,7 @@
       <div class="carousel-inner">
         <% campground.images.forEach((img, i) => {  %>
           <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-              <img src="<%= img.url%>" class="d-block w-100" alt="Campground images">
+              <img style="width: 500px; height: 350px;" src="<%= img.url%>" class="d-block w-100" alt="Campground images">
           </div>
         <% }) %>
       </div>
